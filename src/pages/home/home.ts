@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, App } from 'ionic-angular';
-
+import { NavController } from 'ionic-angular';
+import { RestProvider } from '../../app/providers/rest';
 
 @Component({
   selector: 'page-home',
@@ -8,13 +8,22 @@ import { NavController, App } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public app: App) {
+  countries: any;
+  errorMessage: string;
+
+  constructor(public navCtrl: NavController, public rest: RestProvider) {
 
   }
 
-  logout(){
-      const root = this.app.getRootNav();
-      root.popToRoot();
+  ionViewDidLoad() {
+    this.getCountries();
   }
+
+  getCountries() {
+    this.rest.getCountries()
+       .subscribe(
+         countries => this.countries = countries,
+         error =>  this.errorMessage = <any>error);
+   }
 
 }

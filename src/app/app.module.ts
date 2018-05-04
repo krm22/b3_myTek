@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -12,6 +13,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
+
+import { RestProvider } from './providers/rest';
+import { AuthProvider } from './providers/auth';
+import { LoginMessageProvider } from './providers/loginMessage.provider'
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,6 +34,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -46,6 +52,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    RestProvider,
+    AuthProvider,
+    LoginMessageProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
