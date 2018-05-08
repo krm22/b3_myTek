@@ -1,12 +1,19 @@
 <ion-header>
+
   <ion-navbar>
-    <img class="navbarLogo" src="assets/imgs/logo.png"/>
+    <img class="navbarLogo" src="assets/imgs/logo.png" />
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to MyTek!</h2>
+
+  <h3>Welcome inside, {{email}}!</h3>
 
   <ion-content padding>
     <ion-list>
@@ -20,11 +27,6 @@
     </ion-list>
   </ion-content>
 
-  <button
-   ion-button
-   block
-   color="secondary"
-  (click)="logout()">Logout</button>
 
 
 </ion-content>
