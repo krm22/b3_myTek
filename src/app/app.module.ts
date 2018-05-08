@@ -6,16 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { WelcomePage } from '../pages/welcome/welcome';
-import { SignupPage } from '../pages/signup/signup';
-import { LoginPage } from '../pages/login/login';
+import { AboutPage } from '../pages/about/about.component';
+import { ContactPage } from '../pages/contact/contact.component';
+import { HomePage } from '../pages/home/home.component';
+import { TabsPage } from '../pages/tabs/tabs.component';
+import { WelcomePage } from '../pages/welcome/welcome.component';
+import { SignupPage } from '../pages/signup/signup.component';
+import { LoginPage } from '../pages/login/login.component';
 
-import { RestProvider } from './providers/rest';
-import { AuthProvider } from './providers/auth';
+import { RestProvider } from './providers/rest.provider';
+import { AuthProvider } from './providers/auth.provider';
 import { LoginMessageProvider } from './providers/loginMessage.provider'
 
 

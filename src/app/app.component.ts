@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { WelcomePage } from '../pages/welcome/welcome';
+import { WelcomePage } from '../pages/welcome/welcome.component';
 
 @Component({
   templateUrl: 'app.html'

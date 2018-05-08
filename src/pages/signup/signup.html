@@ -1,36 +1,47 @@
 
+<ion-header>
+  <ion-navbar>
+      <img class="navbarLogo" src="assets/imgs/logo.png"/>
+    <ion-title>Sign Up Page</ion-title>
+  </ion-navbar>
+</ion-header>
 
 
-<ion-content padding>
+<ion-content class="login-content" padding>
+  <div class="login-box">
 
-    <ion-list>
+    <form (ngSubmit)="signUp()" #signUpForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
 
-        <ion-item>
-            <ion-label floating>FirstName</ion-label>
-            <ion-input type="text" #firstname></ion-input>
-          </ion-item>
 
-          <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text" #surname></ion-input>
-          </ion-item>
+              <ion-item>
+                  <ion-input type="text" placeholder="First Name" name="firstname" [(ngModel)]="signUpCredentials.firstname" required></ion-input>
+                </ion-item>
 
-          <ion-item>
-              <ion-label floating>Email</ion-label>
-              <ion-input type="text" #email></ion-input>
+                <ion-item>
+                  <ion-input type="text" placeholder="Surname" name="surname" [(ngModel)]="signUpCredentials.surname" required></ion-input>
+                </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="signUpCredentials.email" required></ion-input>
             </ion-item>
 
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" #password></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="signUpCredentials.password" required></ion-input>
+            </ion-item>
 
-      </ion-list>
+          </ion-list>
+        </ion-col>
+      </ion-row>
 
-      <button
-      ion-button
-      block
-      color="secondary"
-      (click)="signUp()">SignUp</button>
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!signUpForm.form.valid">Sign Up</button>
+        </ion-col>
+      </ion-row>
 
+    </form>
+  </div>
 </ion-content>
