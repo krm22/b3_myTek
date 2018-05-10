@@ -14,9 +14,9 @@ import { WelcomePage } from '../pages/welcome/welcome.component';
 import { SignupPage } from '../pages/signup/signup.component';
 import { LoginPage } from '../pages/login/login.component';
 
-import { RestProvider } from './providers/rest.provider';
-import { AuthProvider } from './providers/auth.provider';
-import { LoginMessageProvider } from './providers/loginMessage.provider'
+import { RestProvider } from '../providers/rest.provider';
+import { AuthProvider } from '../providers/auth.provider';
+import { LoginMessageProvider } from '../providers/loginMessage.provider'
 
 
 import { StatusBar } from '@ionic-native/status-bar';
