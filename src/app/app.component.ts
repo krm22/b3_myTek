@@ -7,14 +7,12 @@ import { ImageLoaderConfig } from "ionic-image-loader";
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { Keyboard } from "@ionic-native/keyboard";
 
-import { WelcomePage } from '../pages/welcome/welcome.component';
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
 
-  rootPage:any = WelcomePage;
+  rootPage: string = 'WelcomePage';
 
   constructor
   (

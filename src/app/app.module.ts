@@ -8,11 +8,6 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { Keyboard } from "@ionic-native/keyboard";
 
-
-import { WelcomePage } from '../pages/welcome/welcome.component';
-import { SignupPage } from '../pages/signup/signup.component';
-import { LoginPage } from '../pages/login/login.component';
-
 import { RestProvider } from '../providers/rest.provider';
 import { AuthProvider } from '../providers/auth.provider';
 import { LoginMessageProvider } from '../providers/loginMessage.provider'
@@ -26,9 +21,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    WelcomePage,
-    SignupPage,
-    LoginPage
   ],
   imports: [
     HttpClientModule,
@@ -39,9 +31,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    WelcomePage,
-    SignupPage,
-    LoginPage
   ],
   providers: [
     Keyboard,
