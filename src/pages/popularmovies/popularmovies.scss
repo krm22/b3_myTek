@@ -1,0 +1,66 @@
+page-popularmovies {
+
+    .card-background-page {
+
+        ion-card {
+            position: relative;
+            text-align: center;
+            margin: 0;
+            width: 100%;
+        }
+
+        .label-md {
+            margin: 0px 0px 0px 0px;
+        }
+
+        .item {
+            padding-left: 0px;
+            margin: 1%;
+            width: 48%;
+            float: left;
+            border-radius: 10px;
+        }
+
+        .item.item-block .item-inner {
+            padding-right: 0px;
+        }
+
+        .card-title {
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            font-size: 1.0em;
+            white-space: normal;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(138, 43, 226, 0.8);
+            border-bottom-left-radius: 50%;
+            border-left: solid;
+            border-bottom: solid;
+            padding-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .card-subtitle {
+            position: absolute;
+            bottom: 0%;
+            left: 0%;
+            font-size: 1.0em;
+            white-space: normal;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(235, 235, 235, 0.5);
+            border-top-right-radius: 50%;
+            border-right: solid;
+            border-top: solid;
+            padding-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+        }
+
+    }
+
+}

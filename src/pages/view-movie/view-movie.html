@@ -1,0 +1,133 @@
+<!--
+  Generated template for the ViewMoviePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bgtranslucent">
+
+  <ion-navbar>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<!-- <ion-content class="background" [ngStyle]="{'background-image': 'url(' + poster + ')'}"> -->
+<ion-content>
+
+  <ion-refresher (ionRefresh)="refreshDetails($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-twitter"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-googleplus"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <div>
+    <div>
+      <img-loader class="bcdrp" src="https://image.tmdb.org/t/p/w500{{backdrop}}"></img-loader>
+    </div>
+
+    <div class="segm">
+      <div>
+        <ion-segment [(ngModel)]="movieinfosegment" color="viol">
+          <ion-segment-button value="info">
+            INFO
+          </ion-segment-button>
+          <ion-segment-button value="cast">
+            CAST
+          </ion-segment-button>
+          <ion-segment-button value="extras">
+            EXTRAS
+          </ion-segment-button>
+          <ion-segment-button value="similar">
+            SIMILAR
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <div [ngSwitch]="movieinfosegment">
+        <ion-list *ngSwitchCase="'info'">
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>TITLE</h2>
+            <p>{{title}}</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>OVERVIEW</h2>
+            <p>{{overview}}</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>GENRE</h2>
+            <p>
+              <span *ngFor="let genre of genres">{{genre.name}}, </span>
+            </p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>RUNTIME</h2>
+            <p>{{runtime}}</p>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'cast'">
+          <ion-item *ngFor="let actor of cast" (click)="openActor(actor)">
+            <ion-thumbnail item-start>
+              <img-loader src="https://image.tmdb.org/t/p/w185{{actor.profile_path}}"></img-loader>
+            </ion-thumbnail>
+            <h2>{{actor.name}}</h2>
+            <h3>{{actor.character}}</h3>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'extras'">
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>PRODUCTION COMPANY</h2>
+            <p>
+              <span *ngFor="let company of productioncompanies">{{company.name}}, </span>
+            </p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>WEBSITE</h2>
+            <a href="{{website}}">{{website}}</a>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'similar'">
+          <ion-item *ngFor="let movie of similarmovies" (click)="openDetails(movie)">
+            <ion-thumbnail item-start>
+              <img-loader src="https://image.tmdb.org/t/p/w185{{movie.poster_path}}"></img-loader>
+            </ion-thumbnail>
+            <h2>{{movie.title}}</h2>
+            <h3>{{movie.overview}}</h3>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

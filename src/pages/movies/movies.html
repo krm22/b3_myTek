@@ -1,0 +1,162 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>MediaTek</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="light" (click)="openFeed()">
+          <ion-icon name="md-chatbubbles"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-refresher (ionRefresh)="refreshMovies($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-item class="movieheader" color="light">
+      Discover Movies
+      <button ion-button clear item-end icon-only color="primary" value="dicover" (click)="openAll('popularmovies')">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-scroll scrollX="true" zoom="false" *ngIf="films">
+
+      <ion-card *ngFor="let film of films" (click)="openDetails(film)">
+
+        <img-loader src="https://image.tmdb.org/t/p/w185{{ film.poster_path }}">
+      </img-loader>
+        <ion-card-content>
+          <ion-card-title>
+            {{ film.title }}
+            <!-- <ion-badge item-end> {{ film.vote_average }} </ion-badge> -->
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-scroll>
+    <ion-scroll scrollX="true" zoom="false" *ngIf="!films">
+
+      <ion-card class="fakecard" *ngFor="let fakecard of fakecards">
+        <div class="fakediv shimmer"></div>
+        <div class="faketitle shimmer"></div>
+      </ion-card>
+
+    </ion-scroll>
+
+    <ion-item class="movieheader" color="light">
+      Top Rated Movies
+      <button ion-button clear item-end icon-only color="primary" (click)="openAll('topratedmovies')">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-scroll scrollX="true" zoom="false" class="secondscroll">
+
+      <ion-card *ngFor="let film of topratedfilms" (click)="openDetails(film)">
+        <img-loader src="https://image.tmdb.org/t/p/w300{{ film.backdrop_path }}"></img-loader>
+        <ion-card-content>
+          <ion-card-title>
+            {{ film.title }}
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-scroll>
+
+    <ion-item class="movieheader" color="light">
+      Upcoming Movies
+      <button ion-button clear item-end icon-only color="primary" (click)="openAll('upcomingmovies')">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-scroll scrollX="true" zoom="false" class="secondscroll">
+
+      <ion-card *ngFor="let film of upcomingfilms" (click)="openDetails(film)">
+        <img-loader src="https://image.tmdb.org/t/p/w300{{ film.backdrop_path }}"></img-loader>
+        <ion-card-content>
+          <ion-card-title>
+            {{ film.title }}
+            <p>{{ film.release_date }}</p>
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-scroll>
+
+    <ion-item class="movieheader" color="light">
+      Movies In Cinema
+      <button ion-button clear item-end icon-only color="primary" (click)="openAll('onairmovies')">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-scroll scrollX="true" zoom="false" class="secondscroll">
+
+      <ion-card *ngFor="let film of nowplayingfilms" (click)="openDetails(film)">
+        <img-loader src="https://image.tmdb.org/t/p/w300{{ film.backdrop_path }}"></img-loader>
+        <ion-card-content>
+          <ion-card-title>
+            {{ film.title }}
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-scroll>
+
+    <ion-item class="movieheader" color="light">
+      Discover TV Shows
+      <button ion-button clear item-end icon-only color="primary" (click)="openAll('popularshows')">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-scroll scrollX="true" zoom="false">
+
+      <ion-card *ngFor="let serie of series" (click)="openSeriesDetails(serie)">
+        <img-loader src="https://image.tmdb.org/t/p/w185{{ serie.poster_path }}"></img-loader>
+        <ion-card-content>
+          <ion-card-title>
+            {{ serie.name }}
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-scroll>
+
+    <ion-item class="movieheader" color="light">
+      Top Rated Shows
+      <button ion-button clear item-end icon-only color="primary" (click)="openAll('topratedshows')">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-scroll scrollX="true" zoom="false" class="secondscroll">
+
+      <ion-card *ngFor="let serie of topratedseries" (click)="openSeriesDetails(serie)">
+        <img-loader src="https://image.tmdb.org/t/p/w300{{ serie.backdrop_path }}"></img-loader>
+        <ion-card-content>
+          <ion-card-title>
+            {{ serie.name }}
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-scroll>
+
+    <ion-item class="movieheader" color="light">
+      TV Shows Airing Today
+      <button ion-button clear item-end icon-only color="primary" (click)="openAll('todayshows')">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-scroll scrollX="true" zoom="false" class="secondscroll">
+
+      <ion-card *ngFor="let serie of todayseries" (click)="openSeriesDetails(serie)">
+        <img-loader src="https://image.tmdb.org/t/p/w300{{ serie.backdrop_path }}"></img-loader>
+        <ion-card-content>
+          <ion-card-title>
+            {{ serie.name }}
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-scroll>
+
+  </ion-content>

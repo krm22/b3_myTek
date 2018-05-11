@@ -1,0 +1,72 @@
+page-view-movie {
+
+    .segm {
+        position: absolute;
+        top: 160px;
+        width: 100%;
+    }
+
+    .bcdrp img {
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 200px;
+        border: 0;
+        position: fixed;
+        z-index: 10;
+    }
+
+    p {
+        white-space: normal;
+        color: white;
+    }
+
+    .item p {
+        color: white;
+    }
+
+    .list .item-block .item-inner {
+        border-bottom: none;
+    }
+
+    .item {
+        background-color: #0d1019;
+        color: white;
+    }
+
+    .item ion-thumbnail img {
+        width: 80px;
+        height: 120px;
+        border-radius: 10px;
+    }
+
+    .list {
+        padding-top: 40px;
+    }
+
+    ion-segment {
+        background-color: rgba(220, 220, 220, 0.7);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        position: fixed;
+        z-index: 10;
+    }
+
+
+    .scroll-content {
+        margin-top: 0 !important;
+        background-color: #0d1019;
+    }
+    ion-header, .toolbar-background {
+        //background-color: initial !important;
+        background-color: rgba(255, 255, 255, 0) !important;
+
+        &:after {
+        height: 0  !important;
+        }
+    }
+
+    ion-scroll {
+        white-space: nowrap;
+        height: 200px;
+    }
+}
