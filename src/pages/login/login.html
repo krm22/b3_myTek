@@ -15,7 +15,9 @@
 
           <ion-list class="form-group" [ngClass]="{
             'has-danger': email.invalid && (email.dirty || email.touched),
-            'has-success': email.valid && (email.dirty || email.touched)
+            'has-success': email.valid && (email.dirty || email.touched),
+            'has-danger': password.invalid && (password.dirty || password.touched),
+            'has-success': password.valid && (password.dirty || password.touched)
             }" inset>
 
             <ion-item>
@@ -29,9 +31,16 @@
             </div>
 
             <ion-item>
-              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="loginForm.password" required>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="loginForm.password" #password="ngModel" required>
               </ion-input>
             </ion-item>
+
+
+            <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+                <p *ngIf="password.errors.required">Password is required</p>
+
+              </div>
+
 
           </ion-list>
         </ion-col>
