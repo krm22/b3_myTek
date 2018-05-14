@@ -28,7 +28,8 @@ export class LoginPage {
 
 
   public onSubmit() {
-if (this.form.valid){
+    if(this.form.valid){
+    console.log(this.loginForm, " form submitted ")
     this.authMessage.showLoading()
     this.authLogin.login(this.loginForm).subscribe(allowed =>{
       if(allowed) {
@@ -37,6 +38,7 @@ if (this.form.valid){
        }else{
         this.navCtrl.push(LoginPage)
        }
+       this.form.reset();
      })
     }
   }

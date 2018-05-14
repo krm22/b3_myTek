@@ -5,7 +5,10 @@ import { LoginPage } from './login';
 import {
   FormsModule,
   FormGroup,
-  FormControl
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+  FormBuilder
 } from '@angular/forms';
 
 
