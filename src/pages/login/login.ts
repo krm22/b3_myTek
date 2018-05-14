@@ -2,16 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, IonicPage} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginMessageProvider } from '../../providers/loginMessage.provider'
-//
 
 
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage({
   name:'LoginPage'

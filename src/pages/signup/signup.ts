@@ -1,5 +1,5 @@
 import { Component  } from '@angular/core';
-import { NavController, NavParams, AlertController, IonicPageModule, IonicPage} from 'ionic-angular';
+import { NavController, NavParams, AlertController, IonicPage} from 'ionic-angular';
 
 import { AuthProvider } from '../../providers/auth.provider';
 

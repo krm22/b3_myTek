@@ -12,8 +12,6 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
-
-
   getCountries(): Observable<string[]> {
     return this.http.get(this.apiUrl).pipe(
       map(this.extractData),
