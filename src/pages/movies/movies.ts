@@ -12,9 +12,6 @@ import { AuthProvider } from '../../providers/auth.provider';
 })
 export class MoviesPage {
 
-  firstname = '';
-  email = '';
-
   films: any;
   nowplayingfilms: any;
   upcomingfilms: any;
@@ -76,10 +73,6 @@ export class MoviesPage {
     this.loadtvShows();
     this.loadtopRatedtvShows();
     this.loadtodayShows();
-
-    let info = this.authCtrl.getUserInfo();
-    this.firstname = info['firstname'];
-    this.email = info['email'];
 
   }
 

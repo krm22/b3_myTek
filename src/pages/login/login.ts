@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, IonicPage} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginMessageProvider } from '../../providers/loginMessage.provider'
-
+import { LoginUser } from '../../models/loginUser.model'
+import {  } from "";
 
 
 @IonicPage({
@@ -14,9 +15,8 @@ import { LoginMessageProvider } from '../../providers/loginMessage.provider'
 })
 export class LoginPage {
 
-
-  loginCredentials = { email: '', password: '' }
-
+  private loginForm : LoginUser = new LoginUser();
+  @ViewChild('form') form: any;
 
   constructor
   ( public navCtrl: NavController,
@@ -27,9 +27,10 @@ export class LoginPage {
   ) {}
 
 
-  public login() {
+  public onSubmit() {
+if (this.form.valid){
     this.authMessage.showLoading()
-    this.authLogin.login(this.loginCredentials).subscribe( allowed =>{
+    this.authLogin.login(this.loginForm).subscribe(allowed =>{
       if(allowed) {
         this.navCtrl.push('TabsPage')
         this.authMessage.loginWelcomeMessage();
@@ -37,6 +38,7 @@ export class LoginPage {
         this.navCtrl.push(LoginPage)
        }
      })
+    }
   }
 
 

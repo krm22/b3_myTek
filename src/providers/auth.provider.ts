@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../models/User';
+import { LoginUser } from '../models/loginUser.model'
 import { LoginMessageProvider } from '../providers/loginMessage.provider';
 
 import 'rxjs/add/observable/of';
@@ -12,6 +13,8 @@ import 'rxjs/add/operator/map';
 export class AuthProvider {
 
   currentUser: User;
+  loginUser: LoginUser;
+
 
   private registerUrl = 'http://localhost:9999/api/users/register'
   private loginUrl = 'http://localhost:9999/api/users/login';
@@ -53,7 +56,7 @@ export class AuthProvider {
   }
 
 
-  public login(credentials) : Observable<User> {
+  public login(credentials) : Observable<LoginUser> {
     return Observable.create(observer => {
       this.http.post(this.loginUrl, {
         email_user: credentials.email,
@@ -61,7 +64,7 @@ export class AuthProvider {
       }, { observe: 'response' })
         .subscribe(
           res => {
-            this.currentUser = new User(credentials.email, credentials.password, credentials.firstname, credentials.surname );
+            this.loginUser = new LoginUser(credentials.email, credentials.password);
             observer.next(true);
           },
           err => {
