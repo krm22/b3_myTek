@@ -2,14 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { LoginPage } from './login';
 
-import {
-  FormsModule,
-  FormGroup,
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({

@@ -1,9 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, IonicPage} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
-import { LoginMessageProvider } from '../../providers/loginMessage.provider'
-import { LoginUser } from '../../models/loginUser.model'
-import {  } from "";
+import { LoginMessageProvider } from '../../providers/loginMessage.provider';
+import { LoginUser } from '../../models/loginUser.model';
 
 
 @IonicPage({
@@ -29,11 +28,12 @@ export class LoginPage {
 
   public onSubmit() {
     if(this.form.valid){
-    console.log(this.loginForm, " form submitted ")
+      console.log(this.loginForm)
     this.authMessage.showLoading()
     this.authLogin.login(this.loginForm).subscribe(allowed =>{
       if(allowed) {
         this.navCtrl.push('TabsPage')
+
         this.authMessage.loginWelcomeMessage();
        }else{
         this.navCtrl.push(LoginPage)

@@ -8,24 +8,23 @@
 <ion-content padding>
 
   <div class="login-box">
-
     <form (ngSubmit)="onSubmit()" #form="ngForm">
       <ion-row>
         <ion-col>
 
-          <ion-list class="form-group" [ngClass]="{
-            'has-danger': email.invalid && (email.dirty || email.touched),
-            'has-success': email.valid && (email.dirty || email.touched),
-            'has-danger': password.invalid && (password.dirty || password.touched),
-            'has-success': password.valid && (password.dirty || password.touched)
-            }" inset>
+          <ion-list class="form-group " [ngClass]="{
+                      'danger-email' : email.invalid && (email.dirty || email.touched),
+                      'success-email': email.valid && (email.dirty || email.touched),
+                      'danger-password' : password.invalid && (password.dirty || password.touched),
+                      'success-password': password.valid && (password.dirty || password.touched)
+                      }" inset>
 
             <ion-item>
               <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="loginForm.email" class="form-control" pattern="[^ @]*@[^ @]*"
                 #email="ngModel" required></ion-input>
             </ion-item>
 
-            <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+            <div class="error-email" *ngIf="email.errors && (email.dirty || email.touched)">
               <p *ngIf="email.errors.required">Email is required</p>
               <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
             </div>
@@ -36,9 +35,8 @@
             </ion-item>
 
 
-            <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+            <div class="error-password" *ngIf="password.errors && (password.dirty || password.touched)">
                 <p *ngIf="password.errors.required">Password is required</p>
-
               </div>
 
 

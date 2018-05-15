@@ -16,13 +16,17 @@ import { IonicImageLoader } from 'ionic-image-loader';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ComponentsModule } from '../components/components.module';
+
+
 
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp
   ],
   imports: [
+    ComponentsModule,
     HttpClientModule,
     BrowserModule,
     IonicImageLoader.forRoot(),

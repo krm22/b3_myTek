@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, MenuController } from 'ionic-angular';
 import { MdbProvider } from "../../providers/mdb.provider";
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 import { AuthProvider } from '../../providers/auth.provider';
@@ -58,6 +58,7 @@ export class MoviesPage {
 
   constructor
   (
+    public menuCtrl: MenuController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public movieService: MdbProvider,
@@ -91,6 +92,17 @@ export class MoviesPage {
   }
 
 
+  openMenu() {
+    this.menuCtrl.open();
+  }
+
+  closeMenu() {
+    this.menuCtrl.close();
+  }
+
+  toggleMenu() {
+    this.menuCtrl.toggle();
+  }
 
   logout() {
     this.authCtrl.logout().subscribe(success => {
