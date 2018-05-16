@@ -26,11 +26,11 @@ import { ComponentsModule } from '../components/components.module';
     MyApp
   ],
   imports: [
-    ComponentsModule,
     HttpClientModule,
     BrowserModule,
     IonicImageLoader.forRoot(),
-    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false, tabsHideOnSubPages: true })
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false, tabsHideOnSubPages: true }),
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

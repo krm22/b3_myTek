@@ -16,7 +16,6 @@ export class MyApp {
 
   constructor
   (
-    public menuCtrl: MenuController,
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
@@ -25,9 +24,9 @@ export class MyApp {
     private keyboard: Keyboard
   ) {
       this.initializeApp();
+      this.statusBar =  statusBar;
+      this.splashScreen = splashScreen;
 
-      statusBar.styleDefault();
-      splashScreen.hide();
     }
 
     initializeApp(){
@@ -35,7 +34,8 @@ export class MyApp {
       this.platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
-
+        this. statusBar.styleDefault();
+        this.splashScreen.hide();
         this.imageLoaderConfig.enableDebugMode();
         this.imageLoaderConfig.enableFallbackAsPlaceholder(false);
         this.imageLoaderConfig.setMaximumCacheAge(7 * 24 * 60 * 60 * 1000);// 7 days
