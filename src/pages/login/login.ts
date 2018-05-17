@@ -5,6 +5,7 @@ import { LoginMessageProvider } from '../../providers/loginMessage.provider';
 import { LoginUser } from '../../models/loginUser.model';
 
 
+
 @IonicPage({
   name:'LoginPage'
 })
