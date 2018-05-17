@@ -13,31 +13,35 @@
     <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
       <ion-row>
         <ion-col>
-          <ion-list  class="form-group" [ngClass]="{
-            'danger-email' : email.invalid && (email.dirty || email.touched),
-            'success-email': email.valid && (email.dirty || email.touched),
-            'danger-password' : password.invalid && (password.dirty || password.touched),
-            'success-password': password.valid && (password.dirty || password.touched)
-            }" inset>
+          <ion-list inset>
 
-              <ion-item>
-                  <ion-input type="text" placeholder="First Name" class="form-control" name="firstname" [(ngModel)]="signUpUserForm.firstname" #firstname="ngModel" required></ion-input>
+              <ion-item [ngClass]="{
+                'danger-firstname' : firstname.invalid && (firstname.dirty || firstname.touched),
+                'success-firstname': firstname.valid && (firstname.dirty || firstname.touched)
+                }">
+                  <ion-input type="text" placeholder="First Name"  name="firstname" [(ngModel)]="signUpUserForm.firstname" #firstname="ngModel" required></ion-input>
                 </ion-item>
 
-                <div class="error-firstname" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
+                <div [ngClass]="{}" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
                   <p *ngIf="firstname.errors.required"> Firstname is required</p>
                 </div>
 
-                <ion-item>
-                  <ion-input type="text" placeholder="Surname" name="surname" class="form-control" [(ngModel)]="signUpUserForm.surname" #surname="ngModel" required></ion-input>
+                <ion-item [ngClass]="{
+                  'danger-surname' : surname.invalid && (surname.dirty || surname.touched ),
+                  'success-surname': surname.valid && (surname.dirty || surname.touched)
+                  }" >
+                  <ion-input type="text" placeholder="Surname" name="surname" [(ngModel)]="signUpUserForm.surname" #surname="ngModel" required></ion-input>
                 </ion-item>
 
                 <div class="surname-password" *ngIf="surname.errors && (surname.dirty || surname.touched)">
                   <p *ngIf="surname.errors.required"> Surname is required</p>
                 </div>
 
-            <ion-item>
-              <ion-input type="text" placeholder="Email" name="email" class="form-control" [(ngModel)]="signUpUserForm.email" #email="ngModel" pattern="[^ @]*@[^ @]*" required></ion-input>
+            <ion-item [ngClass]="{
+              'danger-email' : email.invalid && (email.dirty || email.touched),
+              'success-email': email.valid && (email.dirty || email.touched)
+              }">
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="signUpUserForm.email" #email="ngModel" pattern="[^ @]*@[^ @]*" required></ion-input>
             </ion-item>
 
             <div class="error-email" *ngIf="email.errors && (email.dirty || email.touched)">
@@ -45,8 +49,11 @@
               <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
             </div>
 
-            <ion-item>
-              <ion-input type="password" placeholder="Password" name="password" class="form-control" [(ngModel)]="signUpUserForm.password" #password="ngModel" required></ion-input>
+            <ion-item [ngClass]="{
+              'danger-password' : password.errors && (password.dirty || password.touched),
+              'success-password': password.valid && (password.dirty || password.touched)
+               }">
+              <ion-input type="password" placeholder="Password" name="password"  [(ngModel)]="signUpUserForm.password" #password="ngModel" required></ion-input>
             </ion-item>
 
             <div class="error-password" *ngIf="password.errors && (password.dirty || password.touched)">
@@ -64,6 +71,6 @@
       </ion-row>
     </form>
 
-    
+
   </div>
 </ion-content>

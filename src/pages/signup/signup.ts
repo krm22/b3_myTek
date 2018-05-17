@@ -15,7 +15,7 @@ import { SignUpUser } from '../../models/signUpUser'
   name: 'SignupPage'
 })
 @Component({
-  selector: 'page-register',
+  selector: 'page-signup',
   templateUrl: 'signup.html',
 })
 export class SignupPage {

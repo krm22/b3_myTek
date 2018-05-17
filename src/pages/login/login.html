@@ -12,16 +12,15 @@
       <ion-row>
         <ion-col>
 
-          <ion-list class="form-group " [ngClass]="{
-                      'danger-email' : email.invalid && (email.dirty || email.touched),
-                      'success-email': email.valid && (email.dirty || email.touched),
-                      'danger-password' : password.invalid && (password.dirty || password.touched),
-                      'success-password': password.valid && (password.dirty || password.touched)
-                      }" inset>
+          <ion-list>
+            <ion-item [ngClass]="{
+              'danger-email' : email.invalid && (email.dirty || email.touched),
+              'success-email': email.valid && (email.dirty || email.touched)
+              }">
+              <ion-input  type="text" placeholder="Email" name="email" [(ngModel)]="loginForm.email" class="form-control" pattern="[^ @]*@[^ @]*"
+                #email="ngModel" required>
+              </ion-input>
 
-            <ion-item>
-              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="loginForm.email" class="form-control" pattern="[^ @]*@[^ @]*"
-                #email="ngModel" required></ion-input>
             </ion-item>
 
             <div class="error-email" *ngIf="email.errors && (email.dirty || email.touched)">
@@ -29,16 +28,16 @@
               <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
             </div>
 
-            <ion-item>
-              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="loginForm.password" #password="ngModel" required>
-              </ion-input>
+            <ion-item [ngClass]="{
+              'danger-password' : password.errors && (password.dirty || password.touched),
+              'success-password': password.valid && (password.dirty || password.touched)
+               }">
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="loginForm.password" #password="ngModel" required></ion-input>
             </ion-item>
 
-
             <div class="error-password" *ngIf="password.errors && (password.dirty || password.touched)">
-                <p *ngIf="password.errors.required">Password is required</p>
-              </div>
-
+              <p *ngIf="password.errors.required">Password is required</p>
+            </div>
 
           </ion-list>
         </ion-col>
