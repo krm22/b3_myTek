@@ -10,27 +10,48 @@
 <ion-content class="login-content" padding>
   <div class="login-box">
 
-    <form (ngSubmit)="signUp()" #signUpForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
       <ion-row>
         <ion-col>
-          <ion-list inset>
-
+          <ion-list  class="form-group" [ngClass]="{
+            'danger-email' : email.invalid && (email.dirty || email.touched),
+            'success-email': email.valid && (email.dirty || email.touched),
+            'danger-password' : password.invalid && (password.dirty || password.touched),
+            'success-password': password.valid && (password.dirty || password.touched)
+            }" inset>
 
               <ion-item>
-                  <ion-input type="text" placeholder="First Name" name="firstname" [(ngModel)]="signUpCredentials.firstname" required></ion-input>
+                  <ion-input type="text" placeholder="First Name" class="form-control" name="firstname" [(ngModel)]="signUpUserForm.firstname" #firstname="ngModel" required></ion-input>
                 </ion-item>
+
+                <div class="error-firstname" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
+                  <p *ngIf="firstname.errors.required"> Firstname is required</p>
+                </div>
 
                 <ion-item>
-                  <ion-input type="text" placeholder="Surname" name="surname" [(ngModel)]="signUpCredentials.surname" required></ion-input>
+                  <ion-input type="text" placeholder="Surname" name="surname" class="form-control" [(ngModel)]="signUpUserForm.surname" #surname="ngModel" required></ion-input>
                 </ion-item>
 
-            <ion-item>
-              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="signUpCredentials.email" required></ion-input>
-            </ion-item>
+                <div class="surname-password" *ngIf="surname.errors && (surname.dirty || surname.touched)">
+                  <p *ngIf="surname.errors.required"> Surname is required</p>
+                </div>
 
             <ion-item>
-              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="signUpCredentials.password" required></ion-input>
+              <ion-input type="text" placeholder="Email" name="email" class="form-control" [(ngModel)]="signUpUserForm.email" #email="ngModel" pattern="[^ @]*@[^ @]*" required></ion-input>
             </ion-item>
+
+            <div class="error-email" *ngIf="email.errors && (email.dirty || email.touched)">
+              <p *ngIf="email.errors.required">Email is required</p>
+              <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
+            </div>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Password" name="password" class="form-control" [(ngModel)]="signUpUserForm.password" #password="ngModel" required></ion-input>
+            </ion-item>
+
+            <div class="error-password" *ngIf="password.errors && (password.dirty || password.touched)">
+              <p *ngIf="password.errors.required">Password is required</p>
+            </div>
 
           </ion-list>
         </ion-col>
@@ -41,7 +62,8 @@
           <button ion-button class="submit-btn" full type="submit" [disabled]="!signUpForm.form.valid">Sign Up</button>
         </ion-col>
       </ion-row>
-
     </form>
+
+    
   </div>
 </ion-content>
