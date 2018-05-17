@@ -1,9 +1,9 @@
-import { Component  } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
 import { NavController, NavParams, AlertController, IonicPage} from 'ionic-angular';
-
 import { AuthProvider } from '../../providers/auth.provider';
-
 import { LoginMessageProvider } from '../../providers/loginMessage.provider';
+
+import { SignUpUser } from '../../models/signUpUser'
 
 /**
  * Generated class for the SignupPage page.
@@ -20,9 +20,8 @@ import { LoginMessageProvider } from '../../providers/loginMessage.provider';
 })
 export class SignupPage {
 
-  createSuccess = false;
-  signUpCredentials = { email: '', password: '', firstname: '', surname: '' };
-
+  private signUpUserForm : SignUpUser = new SignUpUser();
+  @ViewChild('signUpForm') form: any;
 
   constructor
   (
@@ -33,8 +32,8 @@ export class SignupPage {
     public authMessage: LoginMessageProvider
   ){}
 
-  public signUp() {
-    this.signUpAuth.signUp(this.signUpCredentials).subscribe( success => {
+  public onSubmit() {
+    this.signUpAuth.signUp(this.signUpUserForm).subscribe( success => {
       if (success) {
         this.authMessage.showPopup("Success", "Account created.");
         this.navCtrl.push('TabsPage')

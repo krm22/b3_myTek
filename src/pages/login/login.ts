@@ -25,7 +25,6 @@ export class LoginPage {
     public authMessage: LoginMessageProvider,
   ) {}
 
-
   public onSubmit() {
     if(this.form.valid){
       console.log(this.loginForm)
