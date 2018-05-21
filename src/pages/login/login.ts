@@ -33,7 +33,6 @@ export class LoginPage {
     this.authLogin.login(this.loginForm).subscribe(allowed =>{
       if(allowed) {
         this.navCtrl.push('TabsPage')
-
         this.authMessage.loginWelcomeMessage();
        }else{
         this.navCtrl.push(LoginPage)

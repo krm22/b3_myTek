@@ -65,12 +65,12 @@
       </ion-row>
 
       <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!signUpForm.form.valid">Sign Up</button>
+        <ion-col>
+          <button ion-button class="submit-btn"  color="secondary" block type="submit" [disabled]="!signUpForm.form.valid">Sign Up</button>
         </ion-col>
       </ion-row>
     </form>
-
+<pre>{{ signUpForm.value | json }}</pre>
 
   </div>
 </ion-content>

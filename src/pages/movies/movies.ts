@@ -92,18 +92,6 @@ export class MoviesPage {
   }
 
 
-  openMenu() {
-    this.menuCtrl.open();
-  }
-
-  closeMenu() {
-    this.menuCtrl.close();
-  }
-
-  toggleMenu() {
-    this.menuCtrl.toggle();
-  }
-
   logout() {
     this.authCtrl.logout().subscribe(success => {
       this.navCtrl.push('WelcomePage')

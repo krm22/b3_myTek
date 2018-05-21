@@ -7,7 +7,7 @@
 <ion-header class="bgtranslucent">
 
   <ion-navbar>
-    
+
   </ion-navbar>
 
 </ion-header>
@@ -20,25 +20,6 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-fab right bottom>
-    <button ion-fab color="light">
-      <ion-icon name="add"></ion-icon>
-    </button>
-    <ion-fab-list side="left">
-      <button ion-fab>
-        <ion-icon name="logo-facebook"></ion-icon>
-      </button>
-      <button ion-fab>
-        <ion-icon name="logo-twitter"></ion-icon>
-      </button>
-      <button ion-fab>
-        <ion-icon name="logo-vimeo"></ion-icon>
-      </button>
-      <button ion-fab>
-        <ion-icon name="logo-googleplus"></ion-icon>
-      </button>
-    </ion-fab-list>
-  </ion-fab>
 
   <div>
     <div>
@@ -47,7 +28,7 @@
 
     <div class="segm">
       <div>
-        <ion-segment [(ngModel)]="movieinfosegment" color="viol">
+        <ion-segment [(ngModel)]="movieinfosegment" color="primary">
           <ion-segment-button value="info">
             INFO
           </ion-segment-button>
@@ -73,14 +54,14 @@
           <ion-item>
             <ion-icon name="leaf" item-start></ion-icon>
             <h2>OVERVIEW</h2>
-            <p>{{overview}}</p>
+            <p>{{description}}</p>
           </ion-item>
 
           <ion-item>
             <ion-icon name="leaf" item-start></ion-icon>
             <h2>GENRE</h2>
             <p>
-              <span *ngFor="let genre of genres">{{genre.name}}, </span>
+              <span *ngFor="let genre of genres">{{genre.name}} </span>
             </p>
           </ion-item>
 
@@ -90,6 +71,7 @@
             <p>{{runtime}}</p>
           </ion-item>
         </ion-list>
+
 
         <ion-list *ngSwitchCase="'cast'">
           <ion-item *ngFor="let actor of cast" (click)="openActor(actor)">
@@ -123,11 +105,33 @@
               <img-loader src="https://image.tmdb.org/t/p/w185{{movie.poster_path}}"></img-loader>
             </ion-thumbnail>
             <h2>{{movie.title}}</h2>
-            <h3>{{movie.overview}}</h3>
+            <h3>{{movie.description}}</h3>
           </ion-item>
         </ion-list>
       </div>
     </div>
   </div>
+
+
+
+  <ion-fab right bottom >
+      <button ion-fab color="light">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <ion-fab-list side="left">
+        <button ion-fab>
+          <ion-icon name="logo-facebook"></ion-icon>
+        </button>
+        <button ion-fab>
+          <ion-icon name="logo-twitter"></ion-icon>
+        </button>
+        <button ion-fab>
+          <ion-icon name="logo-vimeo"></ion-icon>
+        </button>
+        <button ion-fab>
+          <ion-icon name="logo-googleplus" ></ion-icon>
+        </button>
+      </ion-fab-list>
+    </ion-fab>
 
 </ion-content>

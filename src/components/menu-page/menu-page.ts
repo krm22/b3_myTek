@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the MenuPageComponent component.
@@ -31,7 +31,7 @@ export class MenuPageComponent {
     toggleMenu() {
       this.menuCtrl.toggle();
     }
-    
+
   }
 
 

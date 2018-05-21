@@ -18,7 +18,7 @@ import { HttpClient } from '@angular/common/http';
 export class ViewMoviePage {
 
   movieinfosegment = "info";
-  overview: any;
+  description: any;
   website: any;
   budget: any;
   title: any;
@@ -37,6 +37,7 @@ export class ViewMoviePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public movieService: MdbProvider, public http: HttpClient) {
+
     this.id = this.navParams.get('film').id;
     this.loadFilmDetails();
     this.loadCast();
@@ -62,7 +63,7 @@ export class ViewMoviePage {
 
   loadFilmDetails() {
     this.http.get('https://api.themoviedb.org/3/movie/'+this.id+'?language=en-US&api_key=4d51e2149ffec1e3fabb84a54d724b76').subscribe((data: any) => {
-      this.overview = data.overview;
+      this.description = data.overview;
       this.website = data.homepage;
       this.budget = "budget " + data.budget;
       this.genres = data.genres;
@@ -78,6 +79,7 @@ export class ViewMoviePage {
       console.log(data);
     });
   }
+
 
   loadCast() {
     this.movieService.getFilmCast(this.type,this.id).then((filmcast: any) => {
@@ -104,5 +106,19 @@ export class ViewMoviePage {
   openActor(actor) {
     this.navCtrl.push('ViewActorPage', { actor: actor});
   }
+
+  // addMovie(){
+  //   this.http.get('https://api.themoviedb.org/3/movie/'+this.id+'?language=en-US&api_key=4d51e2149ffec1e3fabb84a54d724b76').subscribe((data: any) => {
+  //     this.description = data.overview;
+  //     this.genres = data.genres;
+  //     this.poster = "https://image.tmdb.org/t/p/original"+ data.poster_path;
+  //     this.releasedate =  data.release_date;
+  //     this.title = data.original_title;
+  //     console.log(data);
+  //   });
+  // }
+
+
+
 
 }
