@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
@@ -17,6 +17,9 @@ import { IonicImageLoader } from 'ionic-image-loader';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ComponentsModule } from '../components/components.module';
+
+import { TokenInterceptorProvider } from '../providers/token-interceptor/token-interceptor';
+import { CredentialsProvider } from '../providers/credentials.provider';
 
 
 
@@ -45,8 +48,14 @@ import { ComponentsModule } from '../components/components.module';
     LoginMessageProvider,
     MdbProvider,
     NativePageTransitions,
+    CredentialsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BackgroundMode
+    BackgroundMode,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:  TokenInterceptorProvider,
+      multi: true
+    },
   ]
 })
 export class AppModule {}

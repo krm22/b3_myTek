@@ -3,7 +3,8 @@ import { NavController, NavParams, AlertController, IonicPage} from 'ionic-angul
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginMessageProvider } from '../../providers/loginMessage.provider';
 import { LoginUser } from '../../models/loginUser.model';
-
+import { SignupPage } from '../signup/signup';
+import { User } from '../../models/User';
 
 
 @IonicPage({
@@ -13,10 +14,12 @@ import { LoginUser } from '../../models/loginUser.model';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage  {
 
   private loginForm : LoginUser = new LoginUser();
   @ViewChild('form') form: any;
+  public currentUser : User[] ;
+
 
   constructor
   ( public navCtrl: NavController,
@@ -24,16 +27,28 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public authLogin: AuthProvider,
     public authMessage: LoginMessageProvider,
+
   ) {}
+
+  public getUser(){
+    this.authLogin.getUserProfile().subscribe((data : any)=> {
+      if(data){
+       this.currentUser = [ data.firstname_user, data.surname_user, data.email_user ]
+       this.authMessage.showPopup(`Welcome back ${this.currentUser[0]}  ${this.currentUser[1]}` , "What movies have you in mind today?");
+      }
+    })
+
+  }
 
   public onSubmit() {
     if(this.form.valid){
-      console.log(this.loginForm)
     this.authMessage.showLoading()
-    this.authLogin.login(this.loginForm).subscribe(allowed =>{
+    this.authLogin.login(this.loginForm).subscribe((allowed : any ) =>{
       if(allowed) {
+        let user = allowed.token;
+        localStorage.setItem ('token', user)
+        this.getUser();
         this.navCtrl.push('TabsPage')
-        this.authMessage.loginWelcomeMessage();
        }else{
         this.navCtrl.push(LoginPage)
        }
@@ -41,8 +56,6 @@ export class LoginPage {
      })
     }
   }
-
-
 
 
 }
@@ -79,38 +92,6 @@ export class LoginPage {
 
 
 
-
-
-
-
-
-
-  // @ViewChild('email') email;
-  // @ViewChild('password') password;
-
-
-  // errorMessage: string;
-  // message:boolean;
-
-  // ngOnInit(){
-  //   this.authLogin.currentMessage.subscribe(message => this.message = message);
-  //   console.log('LoginPage loaded');
-  // }
-
-
-  // login(){
-  //     this.authLogin.login(credentials)
-  //     if (this.message === true) {
-  //         console.log(this.message);
-  //         this.authMessage.loginWelcomeMessage();
-  //         this.navCtrl.push(HomePage);
-  //      }else if(this.message === false) {
-  //       console.log(this.message);
-  //         this.navCtrl.push(LoginPage);
-  //         this.authMessage.loginPageErrorMessage();
-  //     }
-
-  //   }
 
 
 

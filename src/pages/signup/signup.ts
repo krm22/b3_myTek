@@ -37,14 +37,13 @@ export class SignupPage {
       console.log(this.signUpUserForm)
        this.signUpAuth.signUp(this.signUpUserForm).subscribe(success => {
       if (success) {
-        this.authMessage.showPopup(` Welcome aboard ${this.signUpUserForm.firstname} ` , "Account created" );
-        this.navCtrl.push('TabsPage') 
+        this.authMessage.showPopup(` Welcome aboard ${this.signUpUserForm.firstname} `, "Account created" );
+        this.navCtrl.push('TabsPage')
       } else {
         this.navCtrl.push(SignupPage)
       }
       this.signUpForm.reset();
     })
-
   }
 }
 
