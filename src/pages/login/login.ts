@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController, IonicPage} from 'ionic-angular';
+import { NavController, NavParams, IonicPage} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginMessageProvider } from '../../providers/loginMessage.provider';
-import { LoginUser } from '../../models/loginUser.model';
 import { SignupPage } from '../signup/signup';
 import { User } from '../../models/User';
 
@@ -16,7 +15,7 @@ import { User } from '../../models/User';
 })
 export class LoginPage  {
 
-  private loginForm : LoginUser = new LoginUser();
+  private loginForm : User = new User();
   @ViewChild('form') form: any;
   public currentUser : User[] ;
 
@@ -24,20 +23,17 @@ export class LoginPage  {
   constructor
   ( public navCtrl: NavController,
     public navParams: NavParams,
-    public alertCtrl: AlertController,
     public authLogin: AuthProvider,
-    public authMessage: LoginMessageProvider,
-
+    public authMessage: LoginMessageProvider
   ) {}
 
   public getUser(){
     this.authLogin.getUserProfile().subscribe((data : any)=> {
       if(data){
-       this.currentUser = [ data.firstname_user, data.surname_user, data.email_user ]
+       this.currentUser = [ data.firstname_user, data.surname_user, data.email_user ] ;
        this.authMessage.showPopup(`Welcome back ${this.currentUser[0]}  ${this.currentUser[1]}` , "What movies have you in mind today?");
       }
     })
-
   }
 
   public onSubmit() {
@@ -46,7 +42,7 @@ export class LoginPage  {
     this.authLogin.login(this.loginForm).subscribe((allowed : any ) =>{
       if(allowed) {
         let user = allowed.token;
-        localStorage.setItem ('token', user)
+        localStorage.setItem('token', user)
         this.getUser();
         this.navCtrl.push('TabsPage')
        }else{
@@ -56,7 +52,6 @@ export class LoginPage  {
      })
     }
   }
-
 
 }
 

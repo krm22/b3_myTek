@@ -5,13 +5,9 @@ import { LoginMessageProvider } from '../../providers/loginMessage.provider';
 
 import { SignUpUser } from '../../models/signUpUser'
 import { Observable } from 'rxjs/Observable';
+import { User } from '../../models/User';
 
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 @IonicPage({
   name: 'SignupPage'
 })
@@ -21,8 +17,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SignupPage {
 
-  private signUpUserForm : SignUpUser = new SignUpUser();
+  private signUpUserForm : User = new User();
   @ViewChild('signUpForm') signUpForm: any;
+  // public currentUser : User[] ;
 
   constructor
   (
@@ -34,10 +31,9 @@ export class SignupPage {
 
   public onSubmit() {
     if(this.signUpForm.valid){
-      console.log(this.signUpUserForm)
        this.signUpAuth.signUp(this.signUpUserForm).subscribe(success => {
       if (success) {
-        this.authMessage.showPopup(` Welcome aboard ${this.signUpUserForm.firstname} `, "Account created" );
+        this.authMessage.showPopup(` Welcome aboard ${this.signUpUserForm['firstname']} `, "Account created" );
         this.navCtrl.push('TabsPage')
       } else {
         this.navCtrl.push(SignupPage)
@@ -46,6 +42,17 @@ export class SignupPage {
     })
   }
 }
+
+// public getUser(){
+//   this.signUpAuth.getUserProfile().subscribe((data : any)=> {
+//     if(data){
+//      this.currentUser = [ data.firstname_user, data.surname_user, data.email_user ]
+//     }else{
+//       this.authMessage.showPopup(` Welcome aboard ${this.signUpUserForm['firstname']} `, "Account created" );
+//     }
+//     return this.currentUser
+//   })
+// }
 
 
 }

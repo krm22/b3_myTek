@@ -11,7 +11,6 @@ export class CredentialsProvider {
     console.log('Hello RestProvider Provider');
   }
 
-
   public getToken(){
    return localStorage.getItem('token')
   }

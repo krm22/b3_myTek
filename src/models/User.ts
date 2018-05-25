@@ -4,7 +4,5 @@ export class User  {
     email: string = '',
     password: string = '',
     firstname: string = '',
-    surname: string = '') {
-
-  }
+    surname: string = '') {}
 }

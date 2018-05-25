@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SignUpUser } from '../models/signUpUser'
-import { LoginUser } from '../models/loginUser.model'
+
 import { LoginMessageProvider } from '../providers/loginMessage.provider';
+
+import { User } from '../models/User';
+
 
 import 'rxjs/add/Observable/throw';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import { User } from '../models/User';
+
 
 @Injectable()
 export class AuthProvider {
 
-  currentUser: SignUpUser;
-  loginUser: LoginUser;
-
-
+  currentUser: User;
 
   private registerUrl = 'http://localhost:9999/api/users/register'
   private loginUrl = 'http://localhost:9999/api/users/login';
@@ -28,11 +26,9 @@ export class AuthProvider {
   constructor(
     public http: HttpClient,
     public authMessage: LoginMessageProvider,
-  ) {
-    console.log('Hello Authentification Provider');
-  }
+  ) {}
 
-  public signUp(credentials): Observable<SignUpUser> {
+  public signUp(credentials): Observable<User> {
     console.log("service credentails : ", credentials)
     return this.http.post(this.registerUrl, {
       email_user: credentials.email,
@@ -41,7 +37,7 @@ export class AuthProvider {
       surname_user: credentials.surname,
     }, { observe: 'response' })
       .map(res => {
-        return this.currentUser = new SignUpUser(credentials.email, credentials.password, credentials.firstname, credentials.surname)
+        return this.currentUser = new User(credentials.email, credentials.password, credentials.firstname, credentials.surname)
       }).catch((error: any) => {
         if (error.status === 400) {
            Observable.throw(this.authMessage.showPopup('Sign-up Unsuccessful', 'User already exists or invalid email'))
@@ -53,7 +49,7 @@ export class AuthProvider {
   }
 
 
-  public login(credentials): Observable<LoginUser> {
+  public login(credentials): Observable<User> {
     return this.http.post(this.loginUrl, {
       email_user: credentials.email,
       password_user: credentials.password
@@ -73,10 +69,10 @@ export class AuthProvider {
     };
 
 
-    public getUserProfile(): Observable<User> {
-      return this.http.get(this.getUser )
+  public getUserProfile(): Observable<User> {
+      return this.http.get(this.getUser)
         .map(res => {
-          return res.valueOf()
+          return res
         }).catch((error: any) => {
           if (error.status === 403) {
             Observable.throw(this.authMessage.showPopup('Login Unsuccessful', 'Your password is invalid'));
@@ -90,17 +86,11 @@ export class AuthProvider {
       };
 
 
-// getUserProfile(){
-//   return this.http.get(this.getUser).do(res => console.log(res));
-// }
-  // public getUserInfo(): SignUpUser {
-  //   return this.currentUser;
-  // }
 
-
-  public logout() {
+ public logout() {
     return Observable.create(observer => {
       this.currentUser = null;
+      localStorage.setItem('token',null)
       observer.next(true);
       observer.complete();
     });

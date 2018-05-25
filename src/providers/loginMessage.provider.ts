@@ -13,15 +13,6 @@ export class LoginMessageProvider {
     public loadingCtrl: LoadingController
   ) {}
 
-  loginWelcomeMessage(){
-    let alert = this.alertCtrl.create({
-      title: 'Login Successful',
-      subTitle: 'Welcome to MediaTek',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',
