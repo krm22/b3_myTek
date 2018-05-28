@@ -2,7 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, IonicPage} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginMessageProvider } from '../../providers/loginMessage.provider';
-import { SignupPage } from '../signup/signup';
+import { CredentialsProvider } from '../../providers/credentials.provider'
+
 import { User } from '../../models/User';
 
 
@@ -24,7 +25,8 @@ export class LoginPage  {
   ( public navCtrl: NavController,
     public navParams: NavParams,
     public authLogin: AuthProvider,
-    public authMessage: LoginMessageProvider
+    public authMessage: LoginMessageProvider,
+    public setUserToken: CredentialsProvider
   ) {}
 
   public getUser(){
@@ -42,7 +44,7 @@ export class LoginPage  {
     this.authLogin.login(this.loginForm).subscribe((allowed : any ) =>{
       if(allowed) {
         let user = allowed.token;
-        localStorage.setItem('token', user)
+        this.setUserToken.setUserToken(user)
         this.getUser();
         this.navCtrl.push('TabsPage')
        }else{

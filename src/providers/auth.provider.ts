@@ -52,7 +52,8 @@ export class AuthProvider {
   public login(credentials): Observable<User> {
     return this.http.post(this.loginUrl, {
       email_user: credentials.email,
-      password_user: credentials.password
+      password_user: credentials.password,
+      login: true,
     }, { observe: 'response' })
       .map(res => {
         return  res.body;

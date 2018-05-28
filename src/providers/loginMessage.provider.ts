@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AlertController, LoadingController, Loading } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 
 
 @Injectable()
 export class LoginMessageProvider {
-
-  loading: Loading;
 
   constructor
   (
@@ -14,12 +12,12 @@ export class LoginMessageProvider {
   ) {}
 
   showLoading() {
-    this.loading = this.loadingCtrl.create({
+    let loading = this.loadingCtrl.create({
       content: 'Please wait...',
       duration: 3000,
       dismissOnPageChange: true,
     });
-    this.loading.present();
+    loading.present();
   }
 
   showPopup(title, text) {

@@ -8,7 +8,6 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { Keyboard } from "@ionic-native/keyboard";
 
-import { RestProvider } from '../providers/rest.provider';
 import { AuthProvider } from '../providers/auth.provider';
 import { LoginMessageProvider } from '../providers/loginMessage.provider'
 import { MdbProvider } from '../providers/mdb.provider';
@@ -43,7 +42,6 @@ import { CredentialsProvider } from '../providers/credentials.provider';
     Keyboard,
     StatusBar,
     SplashScreen,
-    RestProvider,
     AuthProvider,
     LoginMessageProvider,
     MdbProvider,
@@ -55,7 +53,7 @@ import { CredentialsProvider } from '../providers/credentials.provider';
       provide: HTTP_INTERCEPTORS,
       useClass:  TokenInterceptorProvider,
       multi: true
-    },
+    }
   ]
 })
 export class AppModule {}

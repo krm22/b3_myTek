@@ -118,12 +118,8 @@ h1,h2,h3,h4,h5,h6,.card-title {
   }
 
   .bgtranslucent .bar-button-default,.bgtranslucent .bar-button-clear-default,.bgtranslucent .bar-button-default {
-      color: white;
+      color: rgb(83, 77, 77);
       background-color: rgba(235, 235, 235, 0.6);
-      border-radius: 100%;
-      min-width: 40px;
-      width: 40px;
-      height: 40px;
   }
 
   .toolbar-background {
@@ -150,5 +146,9 @@ h1,h2,h3,h4,h5,h6,.card-title {
   .toastonline .toast-container {
       background-color: green;
       height: 20px;
+  }
+
+  .ion-button{
+
   }
 

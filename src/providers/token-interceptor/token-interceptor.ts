@@ -1,13 +1,11 @@
-import { HttpClient, HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Injectable, Injector } from '@angular/core';
+import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {CredentialsProvider  } from '../credentials.provider'
-/*
-  Generated class for the TokenInterceptorProvider provider.
+import { RequiredValidator } from '@angular/forms';
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
+
 @Injectable()
 export class TokenInterceptorProvider implements HttpInterceptor {
 
@@ -15,10 +13,25 @@ export class TokenInterceptorProvider implements HttpInterceptor {
     console.log('Hello TokenInterceptorProvider Provider');
   }
 intercept(req : HttpRequest<any>, next : HttpHandler) : Observable<HttpEvent<any>> {
+
+  const token: string =  this.auth.getToken();
+  let apiUrl: string = "localhost:9999/api";
+  let mdbUrl: string = "https://api.themoviedb.org/"
+
+  if(token && req.url.includes(apiUrl)){
   let tokenRequest = req.clone({
-    headers: req.headers.set('Authorization', `${this.auth.getToken()}`)
+   setHeaders: { Authorization: `Bearer ${token}`}
   })
-  return next.handle(tokenRequest)
+    return next.handle(tokenRequest);
+  }else{
+    return next.handle(req)
+  }
+
+
+
 }
 
 }
+
+
+

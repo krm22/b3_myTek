@@ -24,7 +24,6 @@ export class MdbProvider {
   maximumPages = 4;
   similar: any;
   episodes: any;
-
   test: any;
   month: any;
 

@@ -3,8 +3,6 @@ import { NavController, NavParams, IonicPage} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginMessageProvider } from '../../providers/loginMessage.provider';
 
-import { SignUpUser } from '../../models/signUpUser'
-import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/User';
 
 
