@@ -22,7 +22,7 @@ export class LoginPage  {
   public loginForm : User = new User();
   @ViewChild('form') form: any;
   public currentUser : User[];
-
+  title = 'MediaTek Login'
 
   constructor
   ( public navCtrl: NavController,
@@ -58,6 +58,9 @@ export class LoginPage  {
      })
     }
   }
+
+
+  
 
 
 }

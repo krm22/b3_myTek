@@ -89,13 +89,8 @@ export class AuthProvider {
       };
 
  public logout() {
-    return Observable.create(observer => {
       this.currentUser = null;
       this.credService.destroyToken();
-      observer.next(true);
-      observer.complete();
-
-    });
   }
 
 

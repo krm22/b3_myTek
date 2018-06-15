@@ -41,16 +41,4 @@ export class SignupPage {
   }
 }
 
-// public getUser(){
-//   this.signUpAuth.getUserProfile().subscribe((data : any)=> {
-//     if(data){
-//      this.currentUser = [ data.firstname_user, data.surname_user, data.email_user ]
-//     }else{
-//       this.authMessage.showPopup(` Welcome aboard ${this.signUpUserForm['firstname']} `, "Account created" );
-//     }
-//     return this.currentUser
-//   })
-// }
-
-
 }

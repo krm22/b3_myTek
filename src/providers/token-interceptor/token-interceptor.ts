@@ -26,9 +26,7 @@ intercept(req : HttpRequest<any>, next : HttpHandler) : Observable<HttpEvent<any
   }else{
     return next.handle(req)
   }
-
-
-
+ 
 }
 
 }

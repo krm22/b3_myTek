@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
 import { User } from '../../models/User';
+import { WelcomePage } from '../welcome/welcome';
+
 
 
 @IonicPage({
@@ -23,7 +25,6 @@ email:any;
 firstname:any;
 surname:any;
 
-
 public getUser(){
   this.authService.getUserProfile().subscribe((data : any)=> {
     if(data){
@@ -33,5 +34,11 @@ public getUser(){
       this.email = this.currentUser[2]
     }
   })
-}
+ }
+
+ public logout(){
+   this.authService.logout()
+   this.navCtrl.push(WelcomePage)
+ }
+
 }

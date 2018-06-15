@@ -1,26 +1,13 @@
-<ion-header>
-  <ion-navbar>
-    <img class="navbarLogo" src="assets/imgs/logo.png" />
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
 
 
-<ion-card>
+<ion-content center>
 
-<ion-item>
-    <ion-avatar>
-      <img [src]="profilePicture">
-    </ion-avatar>
-  </ion-item>
+    <div class="head" text-center>
+        <ion-title>{{title}}</ion-title>
+    </div>
 
-</ion-card>
-
-
-<ion-content padding>
-
-  <div class="login-box">
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="login-box bg">
+    <form (ngSubmit)="onSubmit()" #form="ngForm" class="inputs">
       <ion-row>
         <ion-col>
 
@@ -29,7 +16,7 @@
               'danger-email' : email.invalid && (email.dirty || email.touched),
               'success-email': email.valid && (email.dirty || email.touched)
               }">
-              <ion-input  type="text" placeholder="Email" name="email" [(ngModel)]="loginForm.email" class="form-control" pattern="[^ @]*@[^ @]*" (change)="emailChanged()"
+              <ion-input  type="text" placeholder="Email" name="email" [(ngModel)]="loginForm.email" class="form-control" pattern="[^ @]*@[^ @]*"
                 #email="ngModel" required>
               </ion-input>
 
@@ -62,7 +49,6 @@
         </ion-col>
       </ion-row>
     </form>
-    <pre>{{form.value | json}}</pre>
   </div>
-
+  <pre>{{ loginForm.value | json }}</pre>
 </ion-content>

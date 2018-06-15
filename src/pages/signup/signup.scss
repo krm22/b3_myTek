@@ -1,5 +1,9 @@
 page-signup {
-
+  .navbarLogo{
+    height: 40px;
+    float: left;
+    margin-left: 10px;
+ }
     .danger-email, .danger-password ,.danger-firstname, .danger-surname{
         background-color:  #a94442; /* red */
       }
