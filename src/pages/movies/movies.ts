@@ -216,7 +216,7 @@ export class MoviesPage {
 
   openFeed() {
     this.nativePageTransitions.drawer(this.draweropts);
-    this.navCtrl.push('FeedPage');
+    this.navCtrl.push('ExplorePage');
   }
 
   openSeriesDetails(serie) {

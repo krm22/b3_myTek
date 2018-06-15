@@ -1,0 +1,111 @@
+page-view-show {
+
+    .segm {
+        position: absolute;
+        top: 160px;
+        width: 100%;
+    }
+
+    .bcdrp img {
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 200px;
+        border: 0;
+        position: fixed;
+        z-index: 8;
+    }
+
+   p {
+        white-space: normal;
+        color: white;
+    }
+
+    .item p {
+        color: white;
+    }
+
+    .list .item-block .item-inner {
+        border-bottom: none;
+    }
+
+    .item {
+        background-color: #0d1019;
+        color: white;
+    }
+
+    .item ion-thumbnail img {
+        width: 80px;
+        height: 120px;
+        border-radius: 10px;
+    }
+
+    .list {
+        padding-top: 40px;
+    }
+
+    ion-segment {
+        background-color: rgba(220, 220, 220, 0.7);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        position: fixed;
+        z-index: 10;
+    }
+
+    .scroll-content {
+        margin-top: 0 !important;
+    }
+
+    ion-header, .toolbar-background {
+        //background-color: initial !important;
+        background-color: rgba(255, 255, 255, 0) !important;
+
+        &:after {
+        height: 0  !important;
+        }
+    }
+
+    ion-scroll {
+        white-space: nowrap;
+        height: 200px;
+    }
+
+
+    .accordion-list {
+        background: color($colors, light);
+        height: 100%;
+    }
+    .section-accordion {
+        background: #0d1019;
+        color: white;
+        margin-bottom: 0px;
+    }
+    .section-active-accordion {
+        background: #8a2be2;
+        color: #fff;
+    }
+ 
+    .child-accordion {
+        background: #31426d;
+        color: #000;
+        margin-bottom: 0px;
+    }
+    .child-item-accordion {
+        background: #495980;
+        color: #000;
+        padding: 10px;
+    }
+    .child-item-accordion p {
+        color: white;
+    }
+    .accordion-list .label {
+        margin: 0px;
+    }
+    .accordion-list .list {
+        padding-top: 0px;
+        margin-bottom: 0px;
+    }
+    .accordion-list .list-header {
+        margin-bottom: 0px;
+    }
+
+}

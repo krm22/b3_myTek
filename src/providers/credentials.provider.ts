@@ -14,5 +14,7 @@ export class CredentialsProvider {
    localStorage.setItem('token', user)
   }
 
-
+  public destroyToken(){
+    localStorage.setItem('token',null)
+  }
 }

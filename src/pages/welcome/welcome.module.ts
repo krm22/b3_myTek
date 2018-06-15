@@ -13,4 +13,4 @@ import { WelcomePage } from './welcome';
    WelcomePage,
   ],
 })
-export class MoviesPageModule {}
+export class WelcomePageModule {}

@@ -1,0 +1,100 @@
+
+
+<!--
+  Generated template for the ViewActorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bgtranslucent">
+
+    <ion-navbar>
+      <ion-title>{{name}}</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content>
+    <div>
+      <img-loader class="bcdrp" src="https://image.tmdb.org/t/p/original{{poster}}"></img-loader>
+    </div>
+
+    <div class="segm">
+      <div>
+        <ion-segment [(ngModel)]="actorsegment" color="viol">
+          <ion-segment-button value="info">
+            INFO
+          </ion-segment-button>
+          <ion-segment-button value="movies">
+            MOVIES
+          </ion-segment-button>
+          <ion-segment-button value="shows">
+            TV SHOWS
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <div [ngSwitch]="actorsegment">
+        <ion-list *ngSwitchCase="'info'">
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>BIOGRAPHY</h2>
+            <p>{{biography}}</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>BIRTHDAY</h2>
+            <p>{{birthday}}</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>PLACE OF BIRTH</h2>
+            <p>{{pob}}</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>DIED</h2>
+            <p>{{died}}</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>GENDER</h2>
+            <p>{{gender}}</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            <h2>WEBSITE</h2>
+            <p>{{website}}</p>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'movies'">
+          <ion-item *ngFor="let movie of movies" (click)="openMovieDetails(movie)">
+            <ion-thumbnail item-start>
+              <img-loader src="https://image.tmdb.org/t/p/w185{{movie.poster_path}}"></img-loader>
+            </ion-thumbnail>
+            <h2>{{movie.title}}</h2>
+            <h3>{{movie.character}}</h3>
+            <h3>{{movie.overview}}</h3>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'shows'">
+          <ion-item *ngFor="let show of shows" (click)="openShowDetails(show)">
+            <ion-thumbnail item-start>
+              <img-loader src="https://image.tmdb.org/t/p/w185{{show.poster_path}}"></img-loader>
+            </ion-thumbnail>
+            <h2>{{show.title}}</h2>
+            <h3>{{show.character}}</h3>
+            <h3>{{show.overview}}</h3>
+          </ion-item>
+        </ion-list>
+
+      </div>
+    </div>
+  </ion-content>

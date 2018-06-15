@@ -17,4 +17,4 @@ import { FormsModule } from '@angular/forms';
    LoginPage,
   ],
 })
-export class MoviesPageModule {}
+export class LoginPageModule {}

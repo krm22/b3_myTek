@@ -1,23 +1,26 @@
-import { Component } from '@angular/core';
-import { MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { MenuController} from 'ionic-angular';
 
-/**
- * Generated class for the MenuPageComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+
 @Component({
   selector: 'menu-page',
   templateUrl: 'menu-page.html'
 })
 export class MenuPageComponent {
 
+
   text: string;
+  rootPage: string;
+
 
   constructor(
     public menuCtrl: MenuController
   ) {}
+
+  openPage(page) {
+    this.rootPage = page;
+    this.menuCtrl.close();
+  }
 
 
     openMenu() {

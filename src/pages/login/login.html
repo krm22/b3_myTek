@@ -5,6 +5,18 @@
   </ion-navbar>
 </ion-header>
 
+
+<ion-card>
+
+<ion-item>
+    <ion-avatar>
+      <img [src]="profilePicture">
+    </ion-avatar>
+  </ion-item>
+
+</ion-card>
+
+
 <ion-content padding>
 
   <div class="login-box">
@@ -17,7 +29,7 @@
               'danger-email' : email.invalid && (email.dirty || email.touched),
               'success-email': email.valid && (email.dirty || email.touched)
               }">
-              <ion-input  type="text" placeholder="Email" name="email" [(ngModel)]="loginForm.email" class="form-control" pattern="[^ @]*@[^ @]*"
+              <ion-input  type="text" placeholder="Email" name="email" [(ngModel)]="loginForm.email" class="form-control" pattern="[^ @]*@[^ @]*" (change)="emailChanged()"
                 #email="ngModel" required>
               </ion-input>
 

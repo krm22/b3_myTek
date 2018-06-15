@@ -1,0 +1,18 @@
+page-explore {
+
+  .toolbar .searchbar {
+      padding: 8px;
+  }
+
+  ion-segment.segment {
+      padding-top: 10px;
+      position: fixed;
+      z-index: 10;
+  }
+  .toolbar .searchbar-ios .searchbar-input {
+    background: white;
+  }
+ .list-ios {
+  margin: 40px 0 32px;
+  }
+}

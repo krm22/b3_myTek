@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profiles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content parallax>
+  <div class="bg">
+
+  </div>
+  <div class="main-content">
+    <img src="../../assets/imgs/dp.jpg" class="dp">
+    <h1 text-center>{{firstname}}</h1>
+    <ion-list no-lines>
+      <ion-item>
+      <ion-icon name="contacts" item-start></ion-icon>
+        28 Friends
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <p>{{firstname}} {{surname}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="paper-plane" item-start></ion-icon>
+        <p>{{email}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="contacts" item-start></ion-icon>
+        <p>GroupsPage</p>
+        <ion-icon name="arrow-dropright" item-end></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="film" item-start></ion-icon>
+        <p>MoviesPage</p>
+        <ion-icon name="arrow-dropright" item-end></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

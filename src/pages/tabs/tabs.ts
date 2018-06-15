@@ -11,9 +11,7 @@ import { IonicPage, NavController, NavParams, MenuController  } from 'ionic-angu
 })
 export class TabsPage {
   tab1Root: string = 'MoviesPage';
-  tab2Root: string = 'MenuPage';
-  // tab3Root: string = 'NotificationsPage';
-  // tab4Root: string = 'ProfilePage';
+  tab4Root: string = 'ProfilePage';
 
   constructor
   (

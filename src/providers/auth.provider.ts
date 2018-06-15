@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { LoginMessageProvider } from '../providers/loginMessage.provider';
+import { CredentialsProvider } from '../providers/credentials.provider'
 
 import { User } from '../models/User';
 
@@ -26,6 +27,7 @@ export class AuthProvider {
   constructor(
     public http: HttpClient,
     public authMessage: LoginMessageProvider,
+    public credService: CredentialsProvider
   ) {}
 
   public signUp(credentials): Observable<User> {
@@ -86,14 +88,13 @@ export class AuthProvider {
         })
       };
 
-
-
  public logout() {
     return Observable.create(observer => {
       this.currentUser = null;
-      localStorage.setItem('token',null)
+      this.credService.destroyToken();
       observer.next(true);
       observer.complete();
+
     });
   }
 

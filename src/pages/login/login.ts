@@ -2,9 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, IonicPage} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth.provider';
 import { LoginMessageProvider } from '../../providers/loginMessage.provider';
-import { CredentialsProvider } from '../../providers/credentials.provider'
+import { CredentialsProvider } from '../../providers/credentials.provider';
+
+
 
 import { User } from '../../models/User';
+
 
 
 @IonicPage({
@@ -16,9 +19,9 @@ import { User } from '../../models/User';
 })
 export class LoginPage  {
 
-  private loginForm : User = new User();
+  public loginForm : User = new User();
   @ViewChild('form') form: any;
-  public currentUser : User[] ;
+  public currentUser : User[];
 
 
   constructor
@@ -29,14 +32,15 @@ export class LoginPage  {
     public setUserToken: CredentialsProvider
   ) {}
 
-  public getUser(){
+ public getUser(){
     this.authLogin.getUserProfile().subscribe((data : any)=> {
       if(data){
-       this.currentUser = [ data.firstname_user, data.surname_user, data.email_user ] ;
+       this.currentUser = [data.firstname_user, data.surname_user, data.email_user] ;
        this.authMessage.showPopup(`Welcome back ${this.currentUser[0]}  ${this.currentUser[1]}` , "What movies have you in mind today?");
       }
     })
   }
+
 
   public onSubmit() {
     if(this.form.valid){
@@ -54,6 +58,7 @@ export class LoginPage  {
      })
     }
   }
+
 
 }
 

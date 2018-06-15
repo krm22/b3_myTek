@@ -1,0 +1,61 @@
+<!--
+  Generated template for the ExplorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar no-border-bottom>
+      <ion-searchbar (ionInput)="getResults($event)" [(ngModel)]="query"></ion-searchbar>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content>
+    <div class="segm">
+      <ion-segment [(ngModel)]="resultssegment" color="light">
+        <ion-segment-button value="all">
+          All
+        </ion-segment-button>
+        <ion-segment-button value="movies">
+          Movies
+        </ion-segment-button>
+        <ion-segment-button value="tv">
+          Tv
+        </ion-segment-button>
+        <ion-segment-button value="actors">
+          Actors
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div [ngSwitch]="resultssegment">
+      <ion-list *ngSwitchCase="'all'">
+        <ion-item *ngFor="let result of allresults" (click)="openResult(result)">
+          <h2 *ngIf="result.title">{{ result.title }}</h2>
+          <h2 *ngIf="result.name">{{ result.name }}</h2>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'movies'">
+        <ion-item *ngFor="let movie of movies" (click)="openMovie(movie)">
+          <h2> {{ movie.title }} </h2>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'tv'">
+        <ion-item *ngFor="let show of shows" (click)="openShow(show)">
+          <h2> {{ show.name }} </h2>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'actors'">
+        <ion-item *ngFor="let actor of people" (click)="openActor(actor)">
+          <h2> {{ actor.name }} </h2>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </ion-content>

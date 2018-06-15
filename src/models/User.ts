@@ -1,5 +1,6 @@
 export class User  {
 
+  email: any;
   constructor(
     email: string = '',
     password: string = '',
